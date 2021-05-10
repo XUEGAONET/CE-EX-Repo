@@ -1,0 +1,11 @@
+{
+	"admin/system/ifman": {
+		"title": "Ifman",
+		"order": 46,
+		"action": {
+			"type": "view",
+			"path": "system/ifman"
+		}
+	}
+}
+
