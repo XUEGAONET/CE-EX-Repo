@@ -1,0 +1,23 @@
+config system
+        option ttylogin '0'
+        option urandom_seed '0'
+        option log_proto 'udp'
+        option hostname 'XUEGAONET'
+        option description 'CE专用'
+        option notes 'CE专用设备
+
+1. 请注意如果作为VTEP使用时，请在防火墙的raw中设置不跟踪VxLAN端口的连接，以避免不必要的内存及CPU开销（可能系统防火墙还需要直接按照端口放行VxLAN端口，状态防火墙启用时连接并未跟踪可能会造成问题）
+2. 请注意配置FRR以及Ifman时，还需要通过SSH连接'
+        option zonename 'Asia/Shanghai'
+        option timezone 'CST-8'
+        option log_size '512'
+        option conloglevel '5'
+        option cronloglevel '9'
+
+config timeserver 'ntp'
+        option use_dhcp '0'
+        list server 'ntp.aliyun.com'
+        list server 'ntp1.aliyun.com'
+        list server '0.cn.pool.ntp.org'
+        list server '1.cn.pool.ntp.org'
+        list server 'ntp.ntsc.ac.cn'
