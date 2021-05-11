@@ -29,15 +29,17 @@ define Package/ifman_arm32/description
 endef
 
 define Package/ifman_arm32/install
-	mkdir $(1)/etc/ifman -p
-	mkdir $(1)/bin -p
-	mkdir $(1)/etc/init.d -p
-	$(INSTALL_BIN) ./files/config.sample.yaml $(1)/etc/ifman/config.yaml
-	$(INSTALL_BIN) ./files/ifman $(1)/etc/init.d
+	# install executeable binary
+	$(INSTALL_DIR) $(1)/bin
 	$(INSTALL_BIN) ./files/ifman_arm32 $(1)/bin/ifman
-	chmod 0600 $(1)/etc/ifman/config.yaml
-	chmod a+x $(1)/bin/ifman
-	chmod a+x $(1)/etc/init.d/ifman
+	
+	# install init.d
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/ifman $(1)/etc/init.d
+	
+	# install config
+	$(INSTALL_DIR) $(1)/etc/ifman
+	$(INSTALL_CONF) ./files/config.sample.yaml $(1)/etc/ifman/config.yaml
 endef
 
 define Build/Compile
