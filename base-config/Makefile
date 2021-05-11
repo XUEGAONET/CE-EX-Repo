@@ -28,9 +28,18 @@ define Package/base-config/description
 endef
 
 define Package/base-config/install
-	# install system config
+	# install op config
 	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_CONF) ./files/system $(1)/etc/config
+	$(INSTALL_CONF) ./files/dhcp $(1)/etc/config
+	$(INSTALL_CONF) ./files/fstab $(1)/etc/config
+	
+	# install sysctl.conf
+	$(INSTALL_CONF) ./files/sysctl.conf $(1)/etc
+	
+	# install nginx.conf
+	$(INSTALL_DIR) $(1)/etc/nginx
+	$(INSTALL_BIN) ./files/nginx.conf $(1)/etc/nginx
 endef
 
 define Build/Compile
