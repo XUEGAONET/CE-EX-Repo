@@ -1,5 +1,5 @@
 logger:
-  mode: rotate
+  mode: stdout
   level: error
   single:
     path: /tmp/ifman.log

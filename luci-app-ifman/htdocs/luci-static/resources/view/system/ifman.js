@@ -25,7 +25,7 @@ return view.extend({
 			E('h2', _('Ifman')),
 			E('p', { 'class': 'cbi-section-descr' },
 				_('Ifman config.yaml editor')),
-			E('p', {}, E('textarea', { 'style': 'width:100%', 'rows': 256 }, [ ifman != null ? ifman : '' ]))
+			E('p', {}, E('textarea', { 'style': 'width:100%', 'rows': 10 }, [ ifman != null ? ifman : '' ]))
 		]);
 	},
 

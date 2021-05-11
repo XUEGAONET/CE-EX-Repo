@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ifman_arm32
-PKG_VERSION:=v1.0.2
+PKG_VERSION:=v1.1
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
@@ -25,18 +25,23 @@ define Package/ifman_arm32
 endef
 
 define Package/ifman_arm32/description
- XUEGAONET Interface manager
+	XUEGAONET Interface manager
 endef
 
 define Package/ifman_arm32/install
-    mkdir /etc/ifman -p
-    
-    $(INSTALL_BIN) ./files/config.sample.yaml $(1)/etc/ifman/config.yaml
-    $(INSTALL_BIN) ./files/ifman.init $(1)/etc/init.d
-    $(INSTALL_BIN) ./files/ifman_arm32 $(1)/bin/ifman
-    
-    chmod a+x /bin/ifman
-    chmod a+x /etc/init.d/ifman.init
+	mkdir $(1)/etc/ifman -p
+	mkdir $(1)/bin -p
+	mkdir $(1)/etc/init.d -p
+	$(INSTALL_BIN) ./files/config.sample.yaml $(1)/etc/ifman/config.yaml
+	$(INSTALL_BIN) ./files/ifman $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/ifman_arm32 $(1)/bin/ifman
+	chmod 0600 $(1)/etc/ifman/config.yaml
+	chmod a+x $(1)/bin/ifman
+	chmod a+x $(1)/etc/init.d/ifman
+endef
+
+define Build/Compile
+	true
 endef
 
 $(eval $(call BuildPackage,ifman_arm32))
