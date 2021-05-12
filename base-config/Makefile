@@ -35,7 +35,8 @@ define Package/base-config/install
 	$(INSTALL_CONF) ./files/fstab $(1)/etc/config
 	
 	# install sysctl.conf
-	$(INSTALL_CONF) ./files/sysctl.conf $(1)/etc
+	$(INSTALL_DIR) $(1)/etc/sysctl.d
+	$(INSTALL_CONF) ./files/sysctl.conf $(1)/etc/sysctl.d/13-xgn-ce.conf
 	
 	# install nginx.conf
 	$(INSTALL_DIR) $(1)/etc/nginx
