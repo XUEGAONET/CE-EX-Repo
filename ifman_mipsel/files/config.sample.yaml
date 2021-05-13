@@ -1,6 +1,6 @@
 logger:
-  mode: stdout
-  level: error
+  mode: syslog
+  level: info
   single:
     path: /tmp/ifman.log
     perm: 0644

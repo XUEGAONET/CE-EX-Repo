@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ifman_mipsel
-PKG_VERSION:=v1.1
+PKG_VERSION:=v1.2
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
@@ -31,7 +31,7 @@ endef
 define Package/ifman_mipsel/install
 	# install executeable binary
 	$(INSTALL_DIR) $(1)/bin
-	$(INSTALL_BIN) ./files/ifman_mipsel $(1)/bin/ifman
+	$(INSTALL_BIN) ./files/ifman_mipsle_semf $(1)/bin/ifman
 	
 	# install init.d
 	$(INSTALL_DIR) $(1)/etc/init.d
